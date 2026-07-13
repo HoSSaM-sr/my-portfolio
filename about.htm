@@ -1,56 +1,51 @@
-﻿<html>
-
+<!DOCTYPE html>
+<html lang="ar">
 <head>
-
-<title>  مدرستي  </title>
-
+    <meta charset="UTF-8">
+    <title>مدرستي</title>
 </head>
-
-<body dir = "rtl" background = "Egypt.jpg">
+<body dir="rtl" background="Egypt.jpg">
 
 <center>
-
-<font face = "Tahoma" color = "red"  size = "6">
-
-<u> عن المدرسة </u>
-
-<br>
-
-<a href = "home.htm"> الصفحة الرئيسة </a> &nbsp;
-
-<a href = "photo.htm"> ألبوم الصور </a> &nbsp;
-
-<a href = "vision.htm"> رؤية المدرسة </a> &nbsp;
-
-<a href = "call us.htm"> أتصل بنا </a> &nbsp; &nbsp;
-
-<a href = "index.html"> تسجيل البيانات </a>
-
-<br><br>
-
+<font face="Tahoma" color="red" size="6">
+    <u> عن المدرسة </u>
+    <br>
+    <a href="home.htm"> الصفحة الرئيسة </a> &nbsp;
+    <a href="photo.htm"> ألبوم الصور </a> &nbsp;
+    <a href="vision.htm"> رؤية المدرسة </a> &nbsp;
+    <a href="call us.htm"> أتصل بنا </a> &nbsp; &nbsp;
+    <a href="index.html"> تسجيل البيانات </a>
+    <br><br>
+</font>
 </center>
+
+<!-- إضافة مشغل الصوت الحديث هنا مع زر التحكم -->
+<center>
+    <div style="background-color: rgba(255,255,255,0.8); padding: 10px; display: inline-block; border-radius: 10px; margin-bottom: 20px;">
+        <p style="font-family: Tahoma; color: black; margin: 0 0 10px 0; font-size: 18px;">اضغط لتشغيل النشيد الوطني المصري:</p>
+        <audio id="bg-audio" src="Egyptian national anthem.mp3" controls></audio>
+    </div>
+</center>
+
+<font face="Tahoma" color="skyblue" size="6">
+    اسم المدرسة: مدرسة مصطفي خليل الثانوية بنين &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    تاريخ نشأة المدرسة: 17/7/1999
+    <br><br>
+    عنوان المدرسة: محافظة القليوبية - مركز كفر شكر - قرية كفر تصفا.
+    <br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://moe.gov.eg"> <img src="The Ministry of Education site.png"> </a>
 </font>
 
-<font face = "Tahoma" color = "skyblue" size = "6">
+<!-- كود برمجى بسيط يحاول تشغيل الصوت تلقائياً بمجرد أن يضغط المستخدم في أي مكان بالصفحة -->
+<script>
+    document.addEventListener('click', function() {
+        var audio = document.getElementById('bg-audio');
+        audio.play().catch(function(error) {
+            console.log("التشغيل التلقائي محجوب حتى يتفاعل المستخدم مع الصفحة.");
+        });
+    }, { once: true }); // يعمل مرة واحدة فقط عند أول ضغطة
+</script>
 
-اسم المدرسة: مدرسة مصطفي خليل الثانوية بنين &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;
-
-تاريخ نشأة المدرسة: 17/7/1999
-
-<br><br>
-
-عنوان المدرسة: محافظة القليوبية - مركز كفر شكر - قرية كفر تصفا.
-
-<br><br>
-
-<audio src="Egyptian national anthem.mp3" controls autoplay>
-    متصفحك لا يدعم تشغيل الصوت.
-</audio>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href = "https://moe.gov.eg//"> <img src = "The Ministry of Education site.png"> </a>
-
-</font>
 </body>
 </html>
