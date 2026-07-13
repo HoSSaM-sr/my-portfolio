@@ -19,9 +19,6 @@
 </font>
 </center>
 
-<!-- هنا ملف الصوت مخفي تماماً وبدون شريط تحكم وبخاصية التشغيل التلقائي والتكرار -->
-<audio id="bg-music" src="Egyptian national anthem.mp3" autoplay loop style="display:none;"></audio>
-
 <font face="Tahoma" color="skyblue" size="6">
     اسم المدرسة: مدرسة مصطفي خليل الثانوية بنين &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     تاريخ نشأة المدرسة: 17/7/1999
@@ -32,22 +29,23 @@
     <a href="https://moe.gov.eg"> <img src="The Ministry of Education site.png"> </a>
 </font>
 
-<!-- الكود السحري لتشغيل الصوت في الخلفية فوراً بمجرد تفاعل المستخدم -->
+<br><br><br><br>
+
+<!-- شريط الصوت تحت خااااالص في نهاية الصفحة ومثبت بشكل مريح -->
+<center>
+    <div style="margin-top: 50px; padding: 10px; background-color: rgba(255,255,255,0.2); display: inline-block; border-radius: 30px;">
+        <audio id="bg-audio" src="Egyptian national anthem.mp3" controls autoplay loop style="width: 300px; height: 40px;"></audio>
+    </div>
+</center>
+
+<!-- كود يحاول تشغيل الصوت تلقائياً أول ما تلمس الصفحة -->
 <script>
-    function playAudio() {
-        var audio = document.getElementById('bg-music');
+    document.addEventListener('click', function() {
+        var audio = document.getElementById('bg-audio');
         audio.play().catch(function(error) {
-            console.log("المتصفح حظر التشغيل التلقائي الصامت، جاري الانتظار...");
+            console.log("حماية المتصفح منعت التشغيل التلقائي حتى يتفاعل المستخدم.");
         });
-    }
-
-    // محاولة التشغيل فوراً عند تحميل الصفحة
-    window.addEventListener('DOMContentLoaded', playAudio);
-
-    // التحايل على المتصفح: إذا ضغط المستخدم في أي مكان بالصفحة يشتغل الصوت فوراً
-    document.addEventListener('click', playAudio, { once: true });
-    document.addEventListener('keydown', playAudio, { once: true });
-    document.addEventListener('touchstart', playAudio, { once: true });
+    }, { once: true });
 </script>
 
 </body>
