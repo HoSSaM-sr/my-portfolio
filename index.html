@@ -6,35 +6,40 @@
 
 <body dir="rtl" background="3.png">
 
-<!-- بداية الفورم -->
 <form name="form1" action="home.htm" onsubmit="return f1();">
 
 <center>
 <font face="tohame" color="red" size="6">
-
 تسجيل بيانات طالب جديد
+</font>
+</center>
 
 <br><br>
 
-ادخل الاسم
-<input type="text" name="t1">
+<!-- ضبطنا النسبة هنا لـ 25% عشان تزحف سنة بسيطة جهة الشمال وتتوسط الشاشة بشكل مثالي -->
+<table border="0" cellpadding="8" style="font-size: 24px; color: red; font-family: 'tohame'; margin-right: 25%; margin-left: auto;">
+    <tr>
+        <td align="left">ادخل الاسم:</td>
+        <td align="right"><input type="text" name="t1" style="width: 250px;"></td>
+    </tr>
+    <tr>
+        <td align="left">ادخل كلمة المرور:</td>
+        <td align="right"><input type="password" name="t2" style="width: 250px;"></td>
+    </tr>
+    <tr>
+        <td align="left">اعد كتابة كلمة المرور السابقة:</td>
+        <td align="right"><input type="password" name="t3" style="width: 250px;"></td>
+    </tr>
+    <tr>
+        <td align="left">السن بالارقام:</td>
+        <td align="right"><input type="text" name="t4" style="width: 250px;"></td>
+    </tr>
+</table>
 
-<br><br>
+<br>
 
-ادخل كلمة المرور
-<input type="password" name="t2">
-
-<br><br>
-
-اعد كتابة كلمة المرور السابقة
-<input type="password" name="t3">
-
-<br><br>
-
-السن بالارقام
-<input type="text" name="t4">
-
-<br><br>
+<center>
+<font face="tohame" color="red" size="6">
 
 النوع 
 <input type="radio" name="a"> ذكر
@@ -51,41 +56,35 @@
 
 <input type="reset" value="حذف">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- زر الإرسال عادي ونوع submit -->
 <input type="submit" value="ارسال">
 
 </font>
 </center>
 
-</form> <!-- قفلنا الفورم هنا تحت خالص عشان يشمل كل العناصر -->
+</form>
 
 <script>
 function f1(){
-    // 1. فحص حقل الاسم
     if(form1.t1.value == ""){
         alert("غير مسموح بترك حقل الاسم فارغ");
-        return false; // يمنع الانتقال ويوقف الصفحة
+        return false; 
     }
 
-    // 2. فحص طول كلمة المرور
     if(form1.t2.value.length < 8){
         alert("طول كلمة المرور لا يقل عن 8 احرف");
-        return false; // يمنع الانتقال ويوقف الصفحة
+        return false; 
     }
 
-    // 3. فحص تطابق كلمة المرور
     if(form1.t2.value !== form1.t3.value){
-        alert("كلمتا المرور غير متطابقتين، أعد الكتابة بشكل صحيح");
-        return false; // يمنع الانتقال ويوقف الصفحة
+        alert("كلمة المرور التأكيدية لا تطابق كلمة المرور الأولى");
+        return false; 
     }
 
-    // 4. فحص السن (هل هو رقم وهل هو فارغ)
     if(form1.t4.value == "" || isNaN(form1.t4.value)){
         alert("ادخل قيمة عددية صحيحة للسن");
-        return false; // يمنع الانتقال ويوقف الصفحة
+        return false; 
     }
 
-    // لو كل حاجة صحيحة هيعمل التالي ويروح لصفحة home.htm
     return true; 
 }
 </script>
