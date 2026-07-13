@@ -1,124 +1,94 @@
-﻿<html>
+<html>
 
-<head> <title> مدرستي </title>
-
+<head> 
+    <title> مدرستي </title>
 </head>
 
-<body dir = "rtl" background = "3.png">
+<body dir="rtl" background="3.png">
 
-<form name = "form1" action = home.htm>
+<!-- بداية الفورم -->
+<form name="form1" action="home.htm" onsubmit="return f1();">
 
 <center>
-
-<font face = "tohame" color = "red" size = "6">
+<font face="tohame" color="red" size="6">
 
 تسجيل بيانات طالب جديد
 
-<br>
+<br><br>
 
 الاسم
-
-<input type = "text" name = "t1">
+<input type="text" name="t1">
 
 <br><br>
 
 كلمة المرور
-
-<input type = "password" name = "t2">
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;
+<input type="password" name="t2">
 
 <br><br>
 
 تاكيد كلمة المرور
-
-<input type = "password" name = "t3">
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;
+<input type="password" name="t3">
 
 <br><br>
 
 السن بالارقام
-
-<input type = "text" name = "t4">
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;
+<input type="text" name="t4">
 
 <br><br>
 
-</form>
-
-<script>
-
-function f1(){
-
-if(form1.t1.value==""){
-
-alert("غير مسموح بترك حقل الاسم فارغ");
-
-}
-
-if(form1.t2.value.length<8)
-
-{
-
-alert("طول كلمة المرور لا يقل عن 8 احرف");
-
-}
-
-if(form1.t2.value!==form1.t3.value)
-
-{
-
-alert("الكلمتين غير متطابقتين");
-
-}
-
-if(isNaN(form1.t4.value))
-
-{
-
-alert("ادخل قيمة عددية");
-
-return false;
-
-}
-
-}
-
-</script>
-
-النوع <input type = "radio" name = "a"> ذكر
-
-<input type = "radio" name = "a"> انثي
+النوع 
+<input type="radio" name="a"> ذكر
+<input type="radio" name="a"> انثي
 
 <br><br>
 
 اختر اللغة التي تجيدها<br>
-
-العربية
-<input type = "checkbox">
-
-الانجليزية
-<input type = "checkbox">
-
-الفرنسية
-<input type = "checkbox">
+العربية <input type="checkbox">
+الانجليزية <input type="checkbox">
+الفرنسية <input type="checkbox">
 
 <br><br>
 
-<input type = "reset" value = "حذف">
-
+<input type="reset" value="حذف">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;
-
-<input type = "submit" value = "ارسال" onclick = "return f1();"/>
+<!-- زر الإرسال عادي ونوع submit -->
+<input type="submit" value="ارسال">
 
 </font>
 </center>
+
+</form> <!-- قفلنا الفورم هنا تحت خالص عشان يشمل كل العناصر -->
+
+<script>
+function f1(){
+    // 1. فحص حقل الاسم
+    if(form1.t1.value == ""){
+        alert("غير مسموح بترك حقل الاسم فارغ");
+        return false; // يمنع الانتقال ويوقف الصفحة
+    }
+
+    // 2. فحص طول كلمة المرور
+    if(form1.t2.value.length < 8){
+        alert("طول كلمة المرور لا يقل عن 8 احرف");
+        return false; // يمنع الانتقال ويوقف الصفحة
+    }
+
+    // 3. فحص تطابق كلمة المرور
+    if(form1.t2.value !== form1.t3.value){
+        alert("الكلمتين غير متطابقتين");
+        return false; // يمنع الانتقال ويوقف الصفحة
+    }
+
+    // 4. فحص السن (هل هو رقم وهل هو فارغ)
+    if(form1.t4.value == "" || isNaN(form1.t4.value)){
+        alert("ادخل قيمة عددية صحيحة للسن");
+        return false; // يمنع الانتقال ويوقف الصفحة
+    }
+
+    // لو كل حاجة صحيحة هيعمل التالي ويروح لصفحة home.htm
+    return true; 
+}
+</script>
+
 </body>
 </html>
