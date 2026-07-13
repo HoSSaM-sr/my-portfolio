@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>مدرستي</title>
+    <title> مدرستي </title>
 </head>
 <body dir="rtl" background="Egypt.jpg">
 
@@ -19,13 +19,8 @@
 </font>
 </center>
 
-<!-- إضافة مشغل الصوت الحديث هنا مع زر التحكم -->
-<center>
-    <div style="background-color: rgba(255,255,255,0.8); padding: 10px; display: inline-block; border-radius: 10px; margin-bottom: 20px;">
-        <p style="font-family: Tahoma; color: black; margin: 0 0 10px 0; font-size: 18px;">اضغط لتشغيل النشيد الوطني المصري:</p>
-        <audio id="bg-audio" src="Egyptian national anthem.mp3" controls></audio>
-    </div>
-</center>
+<!-- هنا ملف الصوت مخفي تماماً وبدون شريط تحكم وبخاصية التشغيل التلقائي والتكرار -->
+<audio id="bg-music" src="Egyptian national anthem.mp3" autoplay loop style="display:none;"></audio>
 
 <font face="Tahoma" color="skyblue" size="6">
     اسم المدرسة: مدرسة مصطفي خليل الثانوية بنين &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -37,14 +32,22 @@
     <a href="https://moe.gov.eg"> <img src="The Ministry of Education site.png"> </a>
 </font>
 
-<!-- كود برمجى بسيط يحاول تشغيل الصوت تلقائياً بمجرد أن يضغط المستخدم في أي مكان بالصفحة -->
+<!-- الكود السحري لتشغيل الصوت في الخلفية فوراً بمجرد تفاعل المستخدم -->
 <script>
-    document.addEventListener('click', function() {
-        var audio = document.getElementById('bg-audio');
+    function playAudio() {
+        var audio = document.getElementById('bg-music');
         audio.play().catch(function(error) {
-            console.log("التشغيل التلقائي محجوب حتى يتفاعل المستخدم مع الصفحة.");
+            console.log("المتصفح حظر التشغيل التلقائي الصامت، جاري الانتظار...");
         });
-    }, { once: true }); // يعمل مرة واحدة فقط عند أول ضغطة
+    }
+
+    // محاولة التشغيل فوراً عند تحميل الصفحة
+    window.addEventListener('DOMContentLoaded', playAudio);
+
+    // التحايل على المتصفح: إذا ضغط المستخدم في أي مكان بالصفحة يشتغل الصوت فوراً
+    document.addEventListener('click', playAudio, { once: true });
+    document.addEventListener('keydown', playAudio, { once: true });
+    document.addEventListener('touchstart', playAudio, { once: true });
 </script>
 
 </body>
